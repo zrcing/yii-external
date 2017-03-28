@@ -1,5 +1,7 @@
 <?php
 /**
+ * 扩展属性
+ *
  * @author Liao Gengling <liaogling@gmail.com>
  */
 namespace YiiExternal\Db;

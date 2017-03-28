@@ -1,5 +1,7 @@
 <?php
 /**
+ * 扩展属性
+ *
  * @author Liao Gengling <liaogling@gmail.com>
  */
 namespace YiiExternal\Db\Traits;
@@ -8,6 +10,11 @@ use YiiExternal\Exception\InvalidArgumentException;
 
 trait CActiveRecordAttribute
 {
+    /**
+     * 所有属性对象
+     *
+     * @return array [attribute_name => ActiveRecord]
+     */
     public function attrs()
     {
         $ar = static::$attrActiveRecord;
@@ -24,26 +31,44 @@ trait CActiveRecordAttribute
         return $this->attrs;
     }
 
+    /**
+     * 通过属性名称获取对象
+     *
+     * @param $name
+     * @return mixed ActiveRecord|null
+     */
     public function getAttr($name)
     {
         $this->verifyFields($name);
         $attrs = $this->attrs();
-        if (isset($attrs[$name])) {
-            return $attrs[$name];
+        if (! isset($attrs[$name])) {
+            return null;
         }
-        return null;
+        return $attrs[$name];
     }
 
+    /**
+     * 通过属性名称获取对应的值
+     *
+     * @param $name
+     * @return mixed string|null
+     */
     public function getAttrValue($name)
     {
         $this->verifyFields($name);
         $attrs = $this->attrs();
-        if (isset($attrs[$name])) {
-            return $attrs[$name]->attribute_value;
+        if (! isset($attrs[$name])) {
+            return null;
         }
-        return null;
+        return $attrs[$name]->attribute_value;
     }
 
+    /**
+     * 设置属性且保存到数据库
+     *
+     * @param string $name
+     * @param string $value
+     */
     public function setAttr($name, $value)
     {
         $this->verifyFields($name);
@@ -61,6 +86,11 @@ trait CActiveRecordAttribute
         $this->attrs[$name] = $attr;
     }
 
+    /**
+     * 据据属性名称删除此属性
+     *
+     * @param string $name
+     */
     public function deleteAttr($name)
     {
         $this->verifyFields($name);
@@ -71,6 +101,9 @@ trait CActiveRecordAttribute
         }
     }
 
+    /**
+     * 删除所有属性
+     */
     public function deleteAttrAll()
     {
         $attrs = $this->attrs();
@@ -80,7 +113,11 @@ trait CActiveRecordAttribute
         }
     }
 
-
+    /**
+     * 验证属性名称是否在预设置的字段中
+     *
+     * @params string $name
+     */
     private function verifyFields($name)
     {
         $ar = static::$attrActiveRecord;
