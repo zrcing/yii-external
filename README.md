@@ -5,5 +5,5 @@ Yii External is a extension package for Yii Framework , providing new feature fo
 
 ### License
 
-The Netty Tablestore Component is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+Yii External is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
 
