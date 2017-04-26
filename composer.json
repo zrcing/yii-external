@@ -1,0 +1,28 @@
+{
+  "name": "zrcing/yii-external",
+  "description": "Yii external",
+  "keywords": [],
+  "license": "MIT",
+  "homepage": "https://github.com/zrcing/yii-external",
+  "support": {
+    "issues": "https://github.com/zrcing/yii-external/issues",
+    "source": "https://github.com/zrcing/yii-external"
+  },
+  "authors": [
+    {
+      "name": "Gary Liao",
+      "email": "liaogling@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "YiiExternal\\": ""
+    },
+    "exclude-from-classmap": [
+      "/Tests/"
+    ]
+  }
+}
